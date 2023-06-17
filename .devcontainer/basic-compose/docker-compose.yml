@@ -3,7 +3,7 @@ services:
   devcontainer:
     build:
       context: ..
-      dockerfile: .devcontainer/basic-compose/Dockerfile.dev
+      dockerfile: ./Dockerfile.dev
     volumes:
       - ../..:/workspaces:cached
     # network_mode: service:mongodb

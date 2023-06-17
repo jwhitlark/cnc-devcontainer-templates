@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
-	"dockerComposeFile": ".devcontainer/basic-compose/docker-compose.yml",
+	"dockerComposeFile": "./docker-compose.yml",
 	"service": "devcontainer",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
@@ -30,7 +30,11 @@
     "codespaces": {
       // Permissions for repos, actions, packages, etc.
       // See https://docs.github.com/en/codespaces/managing-your-codespaces/managing-repository-access-for-your-codespaces
-      "repositories": { }
+			"repositories": {},
+			"openFiles": [
+				"README.md",
+				"deps.edn"
+			]
     },
     // Editor plugins and settings
 		"vscode": {
