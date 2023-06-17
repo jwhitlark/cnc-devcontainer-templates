@@ -14,3 +14,4 @@ pom.xml.asc
 .cpcache/
 .portal/vs-code.edn
 .clj-kondo/
+.lsp/
