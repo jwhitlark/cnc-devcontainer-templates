@@ -24,7 +24,7 @@
 	// "postCreateCommand": "lein deps",
 
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "vscode",
+	// "remoteUser": "vscode",
 
 	"remoteEnv": {
 		// See https://docs.github.com/en/codespaces/managing-your-codespaces/managing-encrypted-secrets-for-your-codespaces
