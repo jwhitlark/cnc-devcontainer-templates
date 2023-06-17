@@ -15,3 +15,4 @@ pom.xml.asc
 .portal/vs-code.edn
 .clj-kondo/
 .lsp/
+.calva/
