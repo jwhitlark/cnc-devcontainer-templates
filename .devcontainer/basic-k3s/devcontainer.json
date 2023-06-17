@@ -1,0 +1,61 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+{
+	"build": {
+		"dockerfile": "Dockerfile.dev"
+	},
+	"privileged": true,
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		// For docker-in-docker
+    // "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+		// Github CLI
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/rio/features/k3d:1": {}
+  },
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// This should create the cluster on first run, then never again.
+	// "onCreateCommand": "k3d cluster create --registry-create myregistry  > k3d.log 2>&1",
+	// Add the following to auto deploy manifests: --volume /tmp/test-manifests:/var/lib/rancher/k3s/server/manifests/test
+	// Uncomment the next line to run commands after the container is created.
+	// "postCreateCommand": "lein deps",
+
+	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "vscode",
+
+	"remoteEnv": {
+		// See https://docs.github.com/en/codespaces/managing-your-codespaces/managing-encrypted-secrets-for-your-codespaces
+		"SAMPLE_SECRET_FROM_GITHUB": "${localEnv:MY_SAMPLE_GITHUB_SECRET:\"see https://github.com/settings/codespaces to set\"}"
+	},
+  // Configure tool-specific properties.
+	"customizations": {
+    "codespaces": {
+      // Permissions for repos, actions, packages, etc.
+      // See https://docs.github.com/en/codespaces/managing-your-codespaces/managing-repository-access-for-your-codespaces
+			"repositories": {},
+			"openFiles": [
+				"README.md",
+				"deps.edn"
+			]
+    },
+    // Editor plugins and settings
+		"vscode": {
+      // What else is allowed?
+			"extensions": [
+				"betterthantomorrow.calva",
+				"betterthantomorrow.joyride",
+				"djblue.portal",
+				"redhat.vscode-yaml",
+				"usernamehw.errorlens",
+				"rangav.vscode-thunder-client",
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
+			]
+		}
+	}
+}
