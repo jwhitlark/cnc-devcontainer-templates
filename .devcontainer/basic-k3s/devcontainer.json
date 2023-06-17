@@ -20,6 +20,9 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
+	// This should create the cluster on first run, then never again.
+	// "onCreateCommand": "k3d cluster create --registry-create myregistry  > k3d.log 2>&1",
+	// Add the following to auto deploy manifests: --volume /tmp/test-manifests:/var/lib/rancher/k3s/server/manifests/test
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "lein deps",
 
@@ -46,11 +49,12 @@
       // What else is allowed?
 			"extensions": [
 				"betterthantomorrow.calva",
-        "betterthantomorrow.joyride",
+				"betterthantomorrow.joyride",
 				"djblue.portal",
 				"redhat.vscode-yaml",
 				"usernamehw.errorlens",
-				"rangav.vscode-thunder-client"
+				"rangav.vscode-thunder-client",
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
 			]
 		}
 	}

@@ -4,6 +4,17 @@ FROM clojure:temurin-17-tools-deps-jammy
 # JDK: eclipse-temurin 17
 # Clojure: tools-deps, 1.11.1.1347
 
+## TODO: add a vscode user?
+
+RUN apt-get update && apt-get install -y gpg curl leiningen
+## FIXME: apt-get install leiningen AND java 11, can we block that?
+## TODO: still need helm, kustomize?
+
+# Install kubectl
+RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list && apt-get update && apt-get install -y kubectl
+
+
 # Add lein
 # ENV LEIN_VERSION=2.10.0
 # ENV LEIN_INSTALL=/usr/local/bin/
