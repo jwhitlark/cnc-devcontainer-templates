@@ -41,6 +41,6 @@ FROM clojure:temurin-17-tools-deps-jammy
 
 # Add Babashka
 
-# RUN curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install \
-#     && chmod +x install \
-#     && ./install --version $BB_VERSION --static
+RUN curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install \
+    && chmod +x install \
+    && ./install --static
