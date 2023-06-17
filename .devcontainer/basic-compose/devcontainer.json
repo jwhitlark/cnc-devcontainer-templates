@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
-	"dockerComposeFile": "docker-compose.yml",
+	"dockerComposeFile": ".devcontainer/basic-compose/docker-compose.yml",
 	"service": "devcontainer",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
@@ -39,7 +39,7 @@
 				"betterthantomorrow.calva",
         "betterthantomorrow.joyride",
 				"djblue.portal",
-        "redhat.vscode-yaml",
+				"redhat.vscode-yaml",
 				"usernamehw.errorlens",
 				"rangav.vscode-thunder-client"
 			]
