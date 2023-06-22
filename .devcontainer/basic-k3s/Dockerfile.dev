@@ -8,47 +8,15 @@ FROM clojure:temurin-17-tools-deps-jammy
 
 RUN apt-get update && apt-get install -y gpg curl leiningen
 ## FIXME: apt-get install leiningen AND java 11, can we block that?
-## TODO: still need helm, kustomize?
+## TODO: still need helm? kustomize? skaffold?
 
 # Install kubectl
 RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg && \
     echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list && apt-get update && apt-get install -y kubectl
 
+# Install deps-new
 
-# Add lein
-# ENV LEIN_VERSION=2.10.0
-# ENV LEIN_INSTALL=/usr/local/bin/
-
-# WORKDIR /tmp
-
-# # Download the whole repo as an archive
-# RUN set -eux; \
-# apt-get update && \
-# apt-get install -y make gnupg wget && \
-# rm -rf /var/lib/apt/lists/* && \
-# mkdir -p $LEIN_INSTALL && \
-# wget -q https://codeberg.org/leiningen/leiningen/raw/tag/$LEIN_VERSION/bin/lein-pkg && \
-# echo "Comparing lein-pkg checksum ..." && \
-# sha256sum lein-pkg && \
-# echo "b1757ce941e4cbf15cbf649b7b4f413365e612da892d22841ec1728391bb66af *lein-pkg" | sha256sum -c - && \
-# mv lein-pkg $LEIN_INSTALL/lein && \
-# chmod 0755 $LEIN_INSTALL/lein && \
-# export GNUPGHOME="$(mktemp -d)" && \
-# export FILENAME_EXT=jar && \
-# gpg --batch --keyserver hkps://keyserver.ubuntu.com --recv-keys 6A2D483DB59437EBB97D09B1040193357D0606ED && \
-# wget -q https://codeberg.org/leiningen/leiningen/releases/download/$LEIN_VERSION/leiningen-$LEIN_VERSION-standalone.$FILENAME_EXT && \
-# wget -q https://codeberg.org/leiningen/leiningen/releases/download/$LEIN_VERSION/leiningen-$LEIN_VERSION-standalone.$FILENAME_EXT.asc && \
-# echo "Verifying file PGP signature..." && \
-# gpg --batch --verify leiningen-$LEIN_VERSION-standalone.$FILENAME_EXT.asc leiningen-$LEIN_VERSION-standalone.$FILENAME_EXT && \
-# gpgconf --kill all && \
-# rm -rf "$GNUPGHOME" leiningen-$LEIN_VERSION-standalone.$FILENAME_EXT.asc && \
-# mkdir -p /usr/share/java && \
-# mv leiningen-$LEIN_VERSION-standalone.$FILENAME_EXT /usr/share/java/leiningen-$LEIN_VERSION-standalone.jar && \
-# apt-get purge -y --auto-remove gnupg wget
-
-# ENV PATH=$PATH:$LEIN_INSTALL
-# ENV LEIN_ROOT 1
-
+RUN clojure -Ttools install io.github.seancorfield/deps-new '{:git/tag "v0.5.2"}' :as new
 
 # Add Babashka
 
