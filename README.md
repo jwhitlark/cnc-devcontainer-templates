@@ -34,3 +34,17 @@ https://docs.github.com/en/codespaces/prebuilding-your-codespaces/configuring-pr
 ## Setting a minimum machine specification
 
 [codespaces - minimum machine settings](https://docs.github.com/en/enterprise-cloud@latest/codespaces/setting-up-your-project-for-codespaces/configuring-dev-containers/setting-a-minimum-specification-for-codespace-machines)
+
+## K3d commands
+
+    k3d cluster create
+
+    k3d cluster create --registry-create myregistry  > k3d.log 2>&1
+
+    k3d cluster list
+
+    k3d cluster start
+
+Add the following to auto deploy manifests?
+
+    --volume /tmp/test-manifests:/var/lib/rancher/k3s/server/manifests/test
