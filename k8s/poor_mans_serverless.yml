@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: feature-flag
+  name: feature-flag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: feature-flag
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: feature-flag
+      annotations:
+        cloudnativeclojure.org/my_cool_feature: "off"
+    spec:
+      containers:
+      - command:
+        - clojure
+        - -Sdeps
+        - '{:deps {juxt/dirwatch {:mvn/version "0.2.5"}}}'
+        - -e
+        - |-
+          (println (slurp "/etc/podinfo/annotations"))
+          ((requiring-resolve 'juxt.dirwatch/watch-dir) println (clojure.java.io/file "/etc/podinfo/"))
+          (while true (Thread/sleep 5000))
+        image: clojure:temurin-17-tools-deps-jammy
+        name: feature-flag
+        resources: {}
+        volumeMounts:
+          - name: podinfo
+            mountPath: /etc/podinfo
+            readOnly: false
+      volumes:
+        - name: podinfo
+          downwardAPI:
+            items:
+              - path: "labels"
+                fieldRef:
+                  fieldPath: metadata.labels
+              - path: "annotations"
+                fieldRef:
+                  fieldPath: metadata.annotations
