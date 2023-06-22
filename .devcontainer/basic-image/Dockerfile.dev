@@ -1,0 +1,17 @@
+FROM clojure:temurin-17-tools-deps-jammy
+# Details as of 2023-06-17
+# Ubuntu: Ubuntu 22.04 LTS (Jammy Jellyfish)
+# JDK: eclipse-temurin 17
+# Clojure: tools-deps, 1.11.1.1347
+
+# Add lein?
+
+# Install deps-new
+
+RUN clojure -Ttools install io.github.seancorfield/deps-new '{:git/tag "v0.5.2"}' :as new
+
+# Add Babashka
+
+RUN curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install \
+    && chmod +x install \
+    && ./install --static
