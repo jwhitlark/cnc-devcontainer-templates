@@ -6,9 +6,10 @@ FROM clojure:temurin-17-tools-deps-jammy
 
 # Add lein?
 
-# Install deps-new
+# Install deps-new and clj-new (prefer deps-new, but clj-new is needed for some templates)
 
-RUN clojure -Ttools install io.github.seancorfield/deps-new '{:git/tag "v0.5.2"}' :as new
+RUN clojure -Ttools install io.github.seancorfield/deps-new '{:git/tag "v0.5.2"}' :as deps-new
+RUN clojure -Ttools install com.github.seancorfield/clj-new '{:git/tag "v1.2.399"}' :as clj-new
 
 # Add Babashka
 
