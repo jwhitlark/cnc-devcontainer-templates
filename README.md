@@ -9,7 +9,7 @@ around for solutions to make it work for your preferred setup.
 ## Templates
 | Codespace Type | Link |
 | ---- | ---- |
-| Single Image: | [![Open in Github Codespaces Single Image](https://github.com/codespaces/badge.svg)](https://codespaces.new/jwhitlark/cnc-devcontainer-templates?devcontainer_path=.devcontainer%2Fbasic-image%2Fdevcontainer.json) |
+| Single Image (default): | [![Open in Github Codespaces Single Image](https://github.com/codespaces/badge.svg)](https://codespaces.new/jwhitlark/cnc-devcontainer-templates) |
 | Docker Compose: | [![Open in GitHub Codespaces Docker Compose](https://github.com/codespaces/badge.svg)](https://codespaces.new/jwhitlark/cnc-devcontainer-templates?devcontainer_path=.devcontainer%2Fbasic-compose%2Fdevcontainer.json) |
 | Kubernetes (k3s via k3d) | [![Open in GitHub Codespaces Kubernetes (k3s via k3d)](https://github.com/codespaces/badge.svg)](https://codespaces.new/jwhitlark/cnc-devcontainer-templates?devcontainer_path=.devcontainer%2Fbasic-k3s%2Fdevcontainer.json) |
 
@@ -28,9 +28,12 @@ You're going full Cloud Native Clojure, and want to dev as you prod!
 
 All include
 
+* clojure 1.11  (1.12 is going to be awesome!)
 * tools-deps
 * babashka
 * lein
+* clj-new
+* deps-new
 
 ### VSCode liveshare
 

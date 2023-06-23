@@ -4,7 +4,10 @@ FROM clojure:temurin-17-tools-deps-jammy
 # JDK: eclipse-temurin 17
 # Clojure: tools-deps, 1.11.1.1347
 
-# Add lein?
+# Add lein, etc.
+RUN apt-get update && apt-get install -y gpg curl leiningen
+
+#TODO: clean up apt's cache files.
 
 # Install deps-new and clj-new (prefer deps-new, but clj-new is needed for some templates)
 
