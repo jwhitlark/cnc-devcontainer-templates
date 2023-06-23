@@ -1,5 +1,11 @@
 # cnc-devcontainer-templates
 
+### A quick note for non-VSCode users.
+
+After 20+ years of emacs, I switched to VSCode for various reasons.  While these setups are tailor-made for VSCode, both
+Devcontainers and Github Codespaces have both remote and local solutions for other editors. I encourage you to search
+around for solutions to make it work for your preferred setup.
+
 ## Templates
 | Codespace Type | Link |
 | ---- | ---- |
@@ -18,7 +24,7 @@ Simple setups, or projects with multiple local dependencies that are not intende
 ### Kubernetes
 You're going full Cloud Native Clojure, and want to dev as you prod!
 
-## Common
+## Common to all templates
 
 All include
 
@@ -26,11 +32,20 @@ All include
 * babashka
 * lein
 
-## Accessing Private JARs
+### Finding, getting info, and installing additional packages
 
-## Github actions, issues, etc.
+    apt update
+    apt search XYZ
+    apt show XYZ
+    apt install XYZ
 
-## Minimal VSCode setup
+### Accessing Private JARs
+
+See [Managing Access to other Repositories](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-repository-access-for-your-codespaces)
+
+### Github actions, issues, etc.
+
+### Minimal VSCode setup
 
 If you don't use vscode, I recommend setting up a minimal profile that emulates your favorite editor, and turning on settings sync.  That way you will always have a minimally functional editor when you use a codespace.
 
@@ -40,7 +55,7 @@ You will need to specifically allow your repositories to access your shared conf
 
 Configure both of these and more at [Your codespace settings](https://github.com/settings/codespaces)
 
-## Dotfiles
+### Dotfiles
 
 You can specify a dotfile repository, that will be injected into your devcontainer.
 
@@ -48,20 +63,23 @@ You can specify a dotfile repository, that will be injected into your devcontain
 
 Configure at [Your codespace settings](https://github.com/settings/codespaces)
 
-## Prebuilds
+### Prebuilds
 
 Github actions can be automatically setup to pre-build your devcontainer docker images, dramatically speeding up startup.
 
 https://docs.github.com/en/codespaces/prebuilding-your-codespaces/configuring-prebuilds
 
-## Differences between devcontainers on your local machine and Github Codespaces
+### Differences between devcontainers on your local machine and Github Codespaces
 
 
-## Setting a minimum machine specification
+### Setting a minimum machine specification
 
 [codespaces - minimum machine settings](https://docs.github.com/en/enterprise-cloud@latest/codespaces/setting-up-your-project-for-codespaces/configuring-dev-containers/setting-a-minimum-specification-for-codespace-machines)
 
-## K3d commands
+## Single container specifics
+## Docker compose specifics
+## Kubernetes specifics
+### K3d commands
 
     k3d cluster create
 
