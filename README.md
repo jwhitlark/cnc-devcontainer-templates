@@ -32,6 +32,10 @@ All include
 * babashka
 * lein
 
+### VSCode liveshare
+
+All these examples are fully compatible with [VSCode liveshare](https://code.visualstudio.com/learn/collaboration/live-share), which is one of the killer features of this platform.  Being able to work together on on code without setting up an additional environment while using your preferred editor settings is a delight.
+
 ### Finding, getting info, and installing additional packages
 
     apt update
