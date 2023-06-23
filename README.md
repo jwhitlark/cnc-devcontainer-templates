@@ -7,6 +7,17 @@
 | Docker Compose: | [![Open in GitHub Codespaces Docker Compose](https://github.com/codespaces/badge.svg)](https://codespaces.new/jwhitlark/cnc-devcontainer-templates?devcontainer_path=.devcontainer%2Fbasic-compose%2Fdevcontainer.json) |
 | Kubernetes (k3s via k3d) | [![Open in GitHub Codespaces Kubernetes (k3s via k3d)](https://github.com/codespaces/badge.svg)](https://codespaces.new/jwhitlark/cnc-devcontainer-templates?devcontainer_path=.devcontainer%2Fbasic-k3s%2Fdevcontainer.json) |
 
+## When would you use these?
+
+### Single Image
+Quick experiments, Simple tools, or projects with Sass only dependencies.
+
+### Docker Compose
+Simple setups, or projects with multiple local dependencies that are not intended to deployed to Kubernetes in production.
+
+### Kubernetes
+You're going full Cloud Native Clojure, and want to dev as you prod!
+
 ## Common
 
 All include
@@ -23,7 +34,11 @@ All include
 
 If you don't use vscode, I recommend setting up a minimal profile that emulates your favorite editor, and turning on settings sync.  That way you will always have a minimally functional editor when you use a codespace.
 
-Note that you can configure your preference between the web editor, local VSCode, and other editors. Configure at [Your codespace settings](https://github.com/settings/codespaces)
+Note that you can configure your preference between the web editor, local VSCode, and other editors.
+
+You will need to specifically allow your repositories to access your shared configuration.
+
+Configure both of these and more at [Your codespace settings](https://github.com/settings/codespaces)
 
 ## Dotfiles
 
