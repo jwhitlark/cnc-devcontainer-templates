@@ -6,13 +6,16 @@ FROM clojure:temurin-17-tools-deps-jammy
 
 ## TODO: add a vscode user?
 
-RUN apt-get update && apt-get install -y gpg curl leiningen
-## FIXME: apt-get install leiningen AND java 11, can we block that?
-## TODO: still need helm? kustomize? skaffold?
+RUN apt-get update && apt-get install -y gpg curl leiningen kubectx
+## TODO: still need helm? kustomize?
 
 # Install kubectl
 RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg && \
     echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list && apt-get update && apt-get install -y kubectl
+
+# Install Skaffold
+RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
+    install skaffold /usr/local/bin/
 
 # Install deps-new and clj-new (prefer deps-new, but clj-new is needed for some templates)
 
@@ -24,3 +27,5 @@ RUN clojure -Ttools install com.github.seancorfield/clj-new '{:git/tag "v1.2.399
 RUN curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install \
     && chmod +x install \
     && ./install --static
+
+# TODO: remove various apt caches, install scripts, etc.
