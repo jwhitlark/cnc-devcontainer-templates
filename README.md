@@ -29,8 +29,8 @@ You're going full Cloud Native Clojure, and want to dev as you prod!
 All include
 
 * clojure 1.11  (1.12 is going to be awesome!)
-* tools-deps
 * babashka
+* tools-deps
 * lein
 * clj-new
 * deps-new
@@ -86,6 +86,21 @@ https://docs.github.com/en/codespaces/prebuilding-your-codespaces/configuring-pr
 ## Single container specifics
 ## Docker compose specifics
 ## Kubernetes specifics
+
+### Includes
+
+#### Shell tools
+
+* [k3d](https://k3d.io/)
+* [k3s](https://github.com/k3s-io/k3s)
+* kubectl
+* [kubectx and kubens](https://github.com/ahmetb/kubectx)
+* [skaffold](https://skaffold.dev/docs/)
+
+#### Clojure dependencies
+
+* [nubank/k8s-api](https://github.com/nubank/k8s-api)
+
 ### K3d commands
 
     k3d cluster create
