@@ -21,7 +21,7 @@
 	// "forwardPorts": [],
 
 	// This should create the cluster on first run, then never again.
-	"onCreateCommand": "k3d cluster create --registry-create myregistry  > k3d_creation.log 2>&1",
+	"onCreateCommand": "k3d cluster create --registry-create myregistry 2>&1 | tee k3d_creation.log",
 	// Add the following to auto deploy manifests: --volume /tmp/test-manifests:/var/lib/rancher/k3s/server/manifests/test
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "lein deps",
