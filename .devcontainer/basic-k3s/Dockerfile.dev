@@ -6,7 +6,8 @@ FROM clojure:temurin-17-tools-deps-jammy
 
 ## TODO: add a vscode user?
 
-RUN apt-get update && apt-get install -y gpg curl leiningen kubectx
+RUN apt-get update && apt-get install -y gpg curl leiningen
+## kubectx
 ## TODO: still need helm? kustomize?
 
 # Install kubectl
