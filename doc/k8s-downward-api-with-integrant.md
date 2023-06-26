@@ -76,8 +76,8 @@ These are not just useful for dev and ops, but can be used in the app itself to 
 
 ## Dependencies
 
-    {deps {integrant/integrant {:mvn/version "0.8.1"}
-           juxt/dirwatch {:mvn/version "0.2.5"}}}
+    {:deps {integrant/integrant {:mvn/version "0.8.1"}
+            juxt/dirwatch {:mvn/version "0.2.5"}}}
 
 ## Code
 
