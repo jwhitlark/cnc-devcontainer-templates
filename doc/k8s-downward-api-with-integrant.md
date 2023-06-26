@@ -1,11 +1,11 @@
 # K8s, podinfo, downward-api, clojure, & integrant
 
 
-## Overview
+# Overview
 
-## Steps
+# Kubernetes setup
 
-### Enable the downward api in the k8s manifest as a volume
+## Enable the downward api in the k8s manifest as a volume
 
 ``` yaml
 volumes:
@@ -19,7 +19,7 @@ volumes:
           fieldRef:
             fieldPath: metadata.annotations
 ```
-### Mount the volume in the pod
+## Mount the volume in the pod
 
 This is expected to be at `spec.containers` in a `Pod`.  For a `Deployment`, it would be at `spec.template.spec.containers`.
 
@@ -29,17 +29,17 @@ volumeMounts:
   mountPath: /etc/podinfo
 ```
 
-#### Where and how it shows up
+### Where and how it shows up
 
 This will create or shadow the folder `/etc/podinfo` inside your container.
 
 Note that as the labels and annotations are updated in Kubernetes, these files will be updated in the standard atomic unix fashion of writing to a different file then atomically moving it to replace the existing file.  This has implications for watching the files, as you will want to filter out any file changes except for `labels` and `annotations` (in this example, but you're free to call them whatever you want).  I believe both `labels` and `annotations` are updated whenever **either** is changed, so be aware that you might get a change notice without the contents actually changing.
 
-#### Making it work with local development
+### Making it work with local development
 
 I usually just check for the existence of the `/etc/podinfo` directory, and if it doesn't load it from a releative path.
 
-#### Best practices
+# Best practices for labels and annotations
 
 Standardize your namespace, labels, and annotations.  Decide on standards for things like environment, instrumentation (profilier, etc.)
 
@@ -52,7 +52,9 @@ Use exisiting labels where possible:
 
 Note that `app.kubernetes.io` is reservered, as are other namespaces.
 
-##### If you really want to be nice to ops, consider adding some of the following annotations
+## If you really want to be nice to ops, consider adding some of the following annotations
+
+These are not just useful for dev and ops, but can be used in the app itself to direct administrators and even everyday users to the appropriate location.
 
 | Annotation | Description |
 | ----------- | ----------- |
@@ -70,14 +72,14 @@ Note that `app.kubernetes.io` is reservered, as are other namespaces.
 | a8r.io/performance | Link to external performance dashboard. |
 | a8r.io/dependencies | Unstructured text description of the service dependencies for humans. |
 
-### integrant code to watch the directory, and when it changes, update an atom
+# Integrant code to watch the directory, and when it changes, update an atom
 
-#### Dependencies
+## Dependencies
 
     {deps {integrant/integrant {:mvn/version "0.8.1"}
            juxt/dirwatch {:mvn/version "0.2.5"}}}
 
-#### Code
+## Code
 
 ``` clojure
 (ns cnc.podinfo
@@ -119,17 +121,17 @@ Note that `app.kubernetes.io` is reservered, as are other namespaces.
   (close-watcher watcher))
 ```
 
-### Using it in your components
+## Using it in your components
 
-#### If they will check it each time
+### If they will check it each time
 
 deref the atom
 
-#### If they need to watch it and take action when it changes
+### If they need to watch it and take action when it changes
 
 set up a watch
 
-## References
+# References
 
 * [Labels & Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 * [Common Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/)
