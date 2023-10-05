@@ -6,6 +6,8 @@ After 20+ years of emacs, I switched to VSCode for various reasons.  While these
 Devcontainers and Github Codespaces have both remote and local solutions for other editors. I encourage you to search
 around for solutions to make it work for your preferred setup.
 
+[This issue tracks using emacs with devcontainers.](https://github.com/jwhitlark/cnc-devcontainer-templates/issues/3)
+
 ## Templates
 | Codespace Type | Link |
 | ---- | ---- |
